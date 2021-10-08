@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import AddCity from "./helpers/addCity";
 import ViewCity from "./helpers/viewCities";
 import { saveToLocalStorage, getFromLocalStorage } from "./helpers/workWithLocalStorage";
-import { Box, Container } from "@mui/material";
+import { Container } from "@mui/material";
 
 export default function Cities() {
     const [cities, setCities] = useState(

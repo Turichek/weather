@@ -1,41 +1,57 @@
 import React, { useEffect, useState } from "react";
 import GetPos from "./getPos";
+import PropTypes from 'prop-types';
 import WeatherOnWeek from "./weatherOnWeek";
 import GeoCity from "./geoCity";
-import getCity from "./requestCity";
 import { Box, CircularProgress, Container, Tab, Tabs } from "@mui/material"
 import WeatherChart from "./weatherChart";
 
+function TabPanel(props) {
+    const { children, value, index, ...other } = props;
+
+    return (
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`simple-tabpanel-${index}`}
+            aria-labelledby={`simple-tab-${index}`}
+            {...other}
+            style={{backgroundColor: '#90caf9'}}
+        >
+            {value === index && (
+                <Box sx={{
+                    pt:3
+                }}>
+                    {children}
+                </Box>
+            )}
+        </div>
+    );
+}
+
+TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
+};
+
 export default function MyCity() {
     const [myCity, setCity] = useState("");
-    const [weather, setWeather] = useState('');
-    const values = {
-        myCity: {
-            name: myCity,
-            func: setCity
-        },
-        cityWeather: {
-            name: weather,
-            func: setWeather
-        }
-    }
-    const req_str = 'https://api.openweathermap.org/data/2.5/onecall?lat=' +
-        coords.lat +
-        '&lon=' +
-        coords.lon +
-        '&exclude=current,minutely&lang=ru&appid=';
-
-    useEffect(() => {
-        GetPos(values.myCity);
-        if (weather === '') {
-            getCity(req_str, values.cityWeather, "first");
-        }
-    }, [])
-
     const [value, setValue] = useState(0);
+
+    const values = {
+        name: myCity,
+        func: setCity
+    }
+
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+
+    useEffect(() => {
+        GetPos(values);
+    }, [])
+
     function a11yProps(index) {
         return {
             id: `simple-tab-${index}`,
@@ -57,13 +73,19 @@ export default function MyCity() {
 
                     }}>
                         <GeoCity myCity={myCity} />
-                        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                            <Tab label="Item One" {...a11yProps(0)} />
-                            <Tab label="Item Two" {...a11yProps(1)} />
-                            <Tab label="Item Three" {...a11yProps(2)} />
+                        <Tabs sx={{
+                            backgroundColor: '#ffffff',
+                        }}
+                            value={value} onChange={handleChange} aria-label="basic tabs example">
+                            <Tab sx={{width: '50%', maxWidth:'50%'}} label="На ближайшие 48 часов" {...a11yProps(0)} />
+                            <Tab sx={{width: '50%', maxWidth:'50%'}}  label="На неделю" {...a11yProps(1)} />
                         </Tabs>
-                        <WeatherOnWeek coords={myCity.coord} />
-                        <WeatherChart />
+                        <TabPanel value={value} index={0}>
+                            <WeatherChart coords={myCity.coord} />
+                        </TabPanel>
+                        <TabPanel value={value} index={1}>
+                            <WeatherOnWeek coords={myCity.coord} />
+                        </TabPanel>
                     </Box>
 
                     :

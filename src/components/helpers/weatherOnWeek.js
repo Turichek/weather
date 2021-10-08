@@ -14,7 +14,7 @@ export default function WeatherOnWeek({ coords }) {
         coords.lat +
         '&lon=' +
         coords.lon +
-        '&exclude=current,minutely&lang=ru&appid=';
+        '&exclude=current,minutely,hourly&lang=ru&appid=';
 
     useEffect(() => {
         if (days === '') {
@@ -31,8 +31,8 @@ export default function WeatherOnWeek({ coords }) {
                     display: 'flex',
                     flexWrap: 'wrap',
                     justifyContent: 'center',
-                    backgroundColor: '#90caf9',
-                    p: 2,
+                    pb: 2,
+                    px: 2,
                 }}>
                     {days.daily.map((item, index) =>
                         <CardWeatherDay

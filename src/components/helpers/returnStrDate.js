@@ -2,7 +2,6 @@ export default function StrDate(date, format) {
     const dayOfWeek = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
     const month = ['Янв', 'Фев', 'Мар', 'Апр', 'Мая', 'Июня', 'Июля', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'];
 
-    //const date = new Date();
     switch (format) {
         case 1:
             return dayOfWeek[date.getDay()];
@@ -20,6 +19,10 @@ export default function StrDate(date, format) {
             else {
                 return date.getHours() + ":" + date.getMinutes();
             }
+
+        case 5:
+            return date.getHours();
+
         default:
             break;
     }

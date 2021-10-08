@@ -1,7 +1,9 @@
+import StrDate from "./returnStrDate";
+
 export default async function getCity(str, obj, state) {
-    const key = "a08bc186abca0975ed29460a754a1252";
-    console.log(str+key,"fetch")
-    return await fetch(str+key)
+    const key = "3ebf78fdd85485c7457dc724adc7d13b";
+    console.log(str + key, "fetch")
+    return await fetch(str + key)
         .then((response) => {
             return response.json();
         })
@@ -19,10 +21,24 @@ export default async function getCity(str, obj, state) {
                     else alert("Этот город уже есть в списке")
                     break;
 
+                case "third":
+                    editHourly(data.hourly)
+                    obj.func(data);
+                    break;
+
                 default:
                     break;
             }
         });
+
+    function editHourly(hourly) {
+        hourly.map((item) => {
+            item.dt = StrDate(new Date(item.dt * 1000), 5);
+            item.temp = Math.round(item.temp - 273);
+            item.feels_like = Math.round(item.feels_like - 273);
+        });
+        console.log(hourly, "edit");
+    }
 
     function checkCity(city) {
         for (let i = 0; i < obj.arr.length; i++) {
