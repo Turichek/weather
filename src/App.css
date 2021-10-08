@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+}
+span{
+    display: block;
+}
+
+.img-144px{
+    min-width: 144px;
+}
+.img-72px{
+    width: 72px;
+}
+.img-24px{
+    width: 24px;
+}
