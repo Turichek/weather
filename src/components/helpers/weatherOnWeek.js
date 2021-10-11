@@ -1,10 +1,11 @@
 import { Box, CircularProgress } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import CardWeatherDay from "./cardWeatherDay";
+import { saveToLocalStorage, getFromLocalStorage } from "./workWithLocalStorage";
 import getCity from "./requestCity";
 
 export default function WeatherOnWeek({ coords }) {
-    const [days, setDays] = useState('');
+    const [days, setDays] = useState(getFromLocalStorage('week') || '');
     const values = {
         name: days,
         func: setDays
@@ -20,7 +21,8 @@ export default function WeatherOnWeek({ coords }) {
         if (days === '') {
             getCity(req_str, values, "first");
         }
-    }, [])
+        saveToLocalStorage('week', days);
+    }, [days])
 
     console.log(days.daily, "WeatherOnWeek");
 

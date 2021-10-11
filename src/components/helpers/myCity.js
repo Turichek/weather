@@ -62,10 +62,8 @@ export default function MyCity() {
     return (
         <Box sx={{
             pt: 2,
-            backgroundColor: '#bbdefb',
             minWidth: '610px'
         }}>
-            <Container >
                 {myCity !== "" ?
                     <Box sx={{
                         display: 'flex',
@@ -91,8 +89,6 @@ export default function MyCity() {
                     :
                     <CircularProgress />
                 }
-
-            </Container>
         </Box>
     )
 }

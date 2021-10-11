@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AddCity from "./helpers/addCity";
 import ViewCity from "./helpers/viewCities";
+import MyCity from "./helpers/myCity";
 import { saveToLocalStorage, getFromLocalStorage } from "./helpers/workWithLocalStorage";
 import { Container } from "@mui/material";
 
@@ -22,6 +23,7 @@ export default function Cities() {
 
     return (
         <Container maxWidth="lg">
+            <MyCity/>
             <AddCity
                 savedCity={values.arrCity} />
             <ViewCity

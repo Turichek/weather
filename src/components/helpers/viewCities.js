@@ -22,7 +22,7 @@ export default function ViewCity({ savedCity }) {
                     backgroundColor: '#e3f2fd'
                 }}
                     key={index}>
-                    <Typography variant='h4'>{item.name + ", " + item.sys.country}</Typography>
+                    <Typography sx={{textAlign: 'center'}} variant='h4'>{item.name + ", " + item.sys.country}</Typography>
                     <Box sx={{
                         display: 'flex'
                     }}>

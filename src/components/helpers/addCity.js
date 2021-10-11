@@ -16,16 +16,19 @@ export default function AddCity({ savedCity }) {
     }
 
     return (
-        <Box sx={{ mt: 3, height: '56px' }}>
+        <Box sx={{ p: 3, backgroundColor: '#ffffff',height: '56px',display: 'flex' ,justifyContent: 'space-between' }}>
             <TextField
                 label="Введите город"
                 onChange={(e) => setCity(e.target.value)}
                 value={city}
-                type="text" 
+                type="search" 
+                sx={{
+                    width: '80%'
+                }}
             />
             <Button sx={{
+                width: '19%',
                 height: '100%',
-                ml: 1
             }}
                 variant="contained"
                 onClick={add}
