@@ -2,24 +2,31 @@ import React from "react";
 import addIcon from "./addIcon";
 import StrDate from "./returnStrDate";
 import { Box, Typography } from "@mui/material"
+import UpdateCity from "./updateCity";
 
-export default function GeoCity({myCity}) {
-    let date = new Date();
+export default function GeoCity({ myCity }) {
     return (
         <Box>
-            <Typography sx={{
-                width: '100%',
-                textAlign: 'center',
-                mb: 2
-            }} variant='h4'>
-                {myCity.name},
-                {myCity.sys.country}
-            </Typography>
+            <Box sx={{
+                display: 'flex',
+                justifyContent: 'center',
+            }}>
+                <Typography sx={{
+                    width: '100%',
+                    textAlign: 'center',
+                    mb: 2
+                }} variant='h4'>
+                    {myCity.name},
+                    {myCity.sys.country}
+                    <UpdateCity />
+                </Typography>
+                
+            </Box>
             <Box sx={{
                 width: '100%',
                 textAlign: 'center'
             }}>
-                <Typography variant="caption">{StrDate(date, 3) + ", " + StrDate(date, 4)}</Typography>
+                <Typography variant="caption">{StrDate(null, 3) + ", " + StrDate(null, 4)}</Typography>
                 <Box sx={{
                     display: 'flex',
                     justifyContent: 'center',

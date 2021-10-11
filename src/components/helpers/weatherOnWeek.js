@@ -24,6 +24,24 @@ export default function WeatherOnWeek({ coords }) {
         saveToLocalStorage('week', days);
     }, [days])
 
+    /*const [days, setDays] = useState('');
+    const values = {
+        name: days,
+        func: setDays
+    }
+
+    const req_str = 'https://api.openweathermap.org/data/2.5/onecall?lat=' +
+        coords.lat +
+        '&lon=' +
+        coords.lon +
+        '&exclude=current,minutely,hourly&lang=ru&appid=';
+
+    useEffect(() => {
+        if (days === '') {
+            getCity(req_str, values, "first");
+        }
+    }, [])*/
+
     console.log(days.daily, "WeatherOnWeek");
 
     return (

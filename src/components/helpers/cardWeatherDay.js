@@ -12,7 +12,7 @@ export default function CardWeatherDay({item,index}){
             display: 'flex',
             flexDirection: 'column'
         }} key={index}>
-            <Typography sx={{ textAlign: 'center' }} variant="h5">{StrDate(new Date(item.dt * 1000), 1) + ", " + StrDate(new Date(item.dt * 1000), 3)}</Typography>
+            <Typography sx={{ textAlign: 'center' }} variant="h5">{StrDate(item.dt, 1) + ", " + StrDate(item.dt, 3)}</Typography>
             <Divider sx={{ my: 2 }} />
             <Box sx={{
                 display: 'flex',

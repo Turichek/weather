@@ -33,7 +33,7 @@ export default async function getCity(str, obj, state) {
 
     function editHourly(hourly) {
         hourly.map((item) => {
-            item.dt = StrDate(new Date(item.dt * 1000), 5);
+            item.dt = StrDate(item.dt, 5);
             item.temp = Math.round(item.temp - 273);
             item.feels_like = Math.round(item.feels_like - 273);
         });

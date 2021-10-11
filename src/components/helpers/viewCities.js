@@ -2,6 +2,7 @@ import React from "react";
 import DeleteCity from "./deleteCity";
 import addIcon from "./addIcon";
 import { Box, Paper, Typography } from "@mui/material";
+import StrDate from "./returnStrDate";
 
 export default function ViewCity({ savedCity }) {
     return (
@@ -22,7 +23,9 @@ export default function ViewCity({ savedCity }) {
                     backgroundColor: '#e3f2fd'
                 }}
                     key={index}>
-                    <Typography sx={{textAlign: 'center'}} variant='h4'>{item.name + ", " + item.sys.country}</Typography>
+                    
+                    <Typography sx={{ textAlign: 'center' }} variant='h4'>{item.name + ", " + item.sys.country}</Typography>
+                    <Typography variant="caption">{StrDate(item.dt, 3) + ", " + StrDate(item.dt, 4)}</Typography>
                     <Box sx={{
                         display: 'flex'
                     }}>
@@ -30,11 +33,16 @@ export default function ViewCity({ savedCity }) {
                         <img className="img-24px" style={{ marginLeft: '5px' }} src={addIcon(item)} alt="..." />
                     </Box>
                     <Typography variant="body1">Погода: {item.weather[0].description}</Typography>
-                    <Typography variant="body1">Видимость: {item.visibility / 1000}</Typography>
-                    <DeleteCity
-                        savedCity={savedCity}
-                        index={item.id}
-                    />
+                    <Typography variant="body1">Видимость: {item.visibility / 1000}</Typography> 
+                    <Box sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between'
+                    }}>
+                        <DeleteCity
+                            savedCity={savedCity}
+                            index={item.id}
+                        />
+                    </Box>
                 </Paper>
             )}
         </Box>

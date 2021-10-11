@@ -3,7 +3,7 @@ import GetPos from "./getPos";
 import PropTypes from 'prop-types';
 import WeatherOnWeek from "./weatherOnWeek";
 import GeoCity from "./geoCity";
-import { Box, CircularProgress, Container, Tab, Tabs } from "@mui/material"
+import { Box, CircularProgress, Tab, Tabs } from "@mui/material"
 import WeatherChart from "./weatherChart";
 
 function TabPanel(props) {
@@ -35,8 +35,8 @@ TabPanel.propTypes = {
     value: PropTypes.number.isRequired,
 };
 
-export default function MyCity() {
-    const [myCity, setCity] = useState("");
+export default function MyCity({name}) {
+    const [myCity, setCity] = useState(name);
     const [value, setValue] = useState(0);
 
     const values = {

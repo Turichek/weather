@@ -23,7 +23,7 @@ export default function Cities() {
 
     return (
         <Container maxWidth="lg">
-            <MyCity/>
+            <MyCity name={''}/>
             <AddCity
                 savedCity={values.arrCity} />
             <ViewCity

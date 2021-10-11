@@ -1,4 +1,11 @@
-export default function StrDate(date, format) {
+export default function StrDate(dt, format) {
+    let date;
+    if(dt === null){
+        date = new Date();
+    } else {
+        date = new Date(dt * 1000);
+    }
+
     const dayOfWeek = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
     const month = ['Янв', 'Фев', 'Мар', 'Апр', 'Мая', 'Июня', 'Июля', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'];
 
