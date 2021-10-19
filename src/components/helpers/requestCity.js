@@ -32,7 +32,7 @@ export default async function getCity(str, obj, state) {
         });
 
     function editHourly(hourly) {
-        hourly.map((item) => {
+        hourly.forEach((item) => {
             item.dt = StrDate(item.dt, 5);
             item.temp = Math.round(item.temp - 273);
             item.feels_like = Math.round(item.feels_like - 273);

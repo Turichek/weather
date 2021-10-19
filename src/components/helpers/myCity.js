@@ -50,7 +50,7 @@ export default function MyCity({name}) {
 
     useEffect(() => {
         GetPos(values);
-    }, [])
+    }, [])// eslint-disable-line 
 
     function a11yProps(index) {
         return {

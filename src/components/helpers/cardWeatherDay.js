@@ -15,8 +15,7 @@ export default function CardWeatherDay({item,index}){
             <Typography sx={{ textAlign: 'center' }} variant="h5">{StrDate(item.dt, 1) + ", " + StrDate(item.dt, 3)}</Typography>
             <Divider sx={{ my: 2 }} />
             <Box sx={{
-                display: 'flex',
-                //flexWrap:'wrap'
+                display: 'flex'
             }}>
                 <img className="img-144px" src={addIcon(item)} alt="..." />
                 <Box sx={{

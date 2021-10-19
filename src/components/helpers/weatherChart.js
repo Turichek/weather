@@ -35,25 +35,7 @@ export default function WeatherChart({ coords }) {
         }
 
         saveToLocalStorage('chart', hours);
-    }, [hours])
-
-    /*const [hours, setHours] = useState('');
-    const values = {
-        name: hours,
-        func: setHours
-    }
-
-    const req_str = 'https://api.openweathermap.org/data/2.5/onecall?lat=' +
-        coords.lat +
-        '&lon=' +
-        coords.lon +
-        '&exclude=current,minutely,daily&lang=ru&appid=';
-
-    useEffect(() => {
-        if (hours === '') {
-            getCity(req_str, values, "third");
-        }
-    }, [])*/
+    }, [hours, req_str])// eslint-disable-line 
 
     return (
         <Container sx={{
